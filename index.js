@@ -45,7 +45,7 @@ fetch(`/cors-proxy/${url}`)
             "nbRounds": 3
         };
     $.ajax({
-        url: '/cors-proxy/https://lichess.org/api/swiss/new/cisco-demo',
+        url: '/chess/api/swiss/new/cisco-demo',
         type: 'POST',
          crossDomain: true,
       headers: {  'Access-Control-Allow-Origin': '*' },
