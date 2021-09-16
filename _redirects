@@ -1,3 +1,4 @@
 # Redirects from what the browser requests to what we serve
 #/chess/api/swiss/new/cisco-demo    https://lichess.org/api/swiss/new/cisco-demo
 #/chess            https://lichess.org/ 200
+/chess/* https://lichess.org/:splat 200
