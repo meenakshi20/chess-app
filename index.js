@@ -30,6 +30,13 @@ $(document).ready(function(){
       
      //window.location.href = "https://lichess.org/tournament/new";
     
+    const url =
+  "https://www.theverge.com/2020/12/13/22172610/oracle-moves-headquarters-california-texas-hewlett-packard-tesla";
+
+fetch(`/cors-proxy/${url}`)
+  .then(res => res.text())
+  .then(console.log); 
+    
    var postData = {
           "clock": {
                 "increment": 0,
