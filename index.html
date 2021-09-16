@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="" />
-    <meta
-      name="author"
-      content="Mark Otto, Jacob Thornton, and Bootstrap contributors"
-    />
-    <meta name="generator" content="Hugo 0.88.1" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+     <script src="https://binaries.webex.com/static-content-pipeline/webex-embedded-app/v1/webex-embedded-app-sdk.js"
+            defer></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -60,77 +59,66 @@
   <body>
     <div class="col-lg-8 mx-auto p-3 py-md-5">
       <main>
-        <img src="https://cdn.glitch.com/e00a3935-045d-48ec-9ace-0ec142402a0f%2Fchesswebex2.jpg?v=1631742805475" width="500px"> 
+        <!--<<img src="https://cdn.glitch.com/e00a3935-045d-48ec-9ace-0ec142402a0f%2Fchesswebex2.jpg?v=1631742805475" width="500px"> -->
         <!--<img src="https://lichess1.org/assets/logo/lichess-pad12.svg" alt="logo" width="200px" class="sc-csTbgd eNEvTA">
         <img src="https://cdn.glitch.com/e00a3935-045d-48ec-9ace-0ec142402a0f%2Fchess.png?v=1631737013482" /> -->
         <center>
-          <div id="hostMode">
-            <a
-              class="btn btn-secondary"
-              href="#"
-              id="puzzleForDayBtn"
-              role="button"
-              style="margin-bottom: 20px"
-              >Puzzle of the day</a
-            >
-            <button type="button" class="btn btn-primary" id="puzzleForDayBtn">Puzzle of the day</button>
-            <br />
-            <a
-              class="btn btn-warning"
-              href="#"
-              id="watchTVBtn"
-              role="button"
-              style="margin-bottom: 20px"
-              >Watch Chess TV</a
-            >
-            <br />
-            <a
-              class="btn btn-warning mt-6"
-              role="button"
-              id="createTournmentBtn"
-              >Create a tournment</a
-            >
-
-            <br />
+          <div >
+            <div class="container" style="margin-top:500px">
+              <div class="row">
+                <div class="col-xs-4">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-block"
+                    id="puzzleForDayBtn"
+                  >
+                    Puzzle of the day
+                  </button>
+                </div>
+                <div class="col-xs-4">
+                  <button class="btn btn-primary btn-block" id="watchTVBtn">
+                    Watch Chess TV
+                  </button>
+                </div>
+                <div class="col-xs-4" id="hostMode" style="display:none">
+                  <button
+                    class="btn btn-primary btn-block"
+                    id="createTournmentBtn"
+                  >
+                    Create Tournament
+                  </button>
+                </div>
+                <div class="col-xs-4" id="participantMode" style="display:none">
+                  <button
+                    class="btn btn-primary btn-block"
+                    id="createTournmentBtn"
+                  >
+                    Join tournment
+                  </button>
+                </div>
+              </div>
+            </div>
             
-          </div>
-
-          <div id="participantMode">
-            <div class="container" style="margin-top: 100px">
-              <a
-                class="btn btn-warning"
-                href="https://lichess.org/swiss/new/cisco"
-                role="button"
-                >Join tournment</a
-              >
-            </div>
-          </div>
-
-          <div id="puzzleOfDay" style="display:none;">
-            <div class="container" style="margin-top: 100px">
-              <iframe
-                src="https://lichess.org/training/frame?theme=brown&bg=dark"
-                style="width: 400px; height: 444px;"
-                allowtransparency="true"
-                frameborder="0"
-              ></iframe>
-            </div>
-          </div>
-          
-          <iframe name="frame1" src="https://www.chess.com/tournaments" width="100%" height="400"></iframe>
-
-          <div id="watchTV" style="display:none;">
-            <div class="container" style="margin-top: 100px">
-              <iframe
-                src="https://lichess.org/tv/frame?theme=brown&bg=dark"
-                style="width: 400px; height: 444px;"
-                allowtransparency="true"
-                frameborder="0"
-              ></iframe>
-            </div>
+            <!--<p>
+              Click a button below to get
+              information from the embedded app environment emulator.
+              <br/>
+              <button onclick="handleGetUser()">getUser()</button> 
+              <button onclick="handleGetMeeting()">getMeeting()</button>
+              <button onclick="handleGetSpace()">getSpace()</button>
+            </p>-->
+                    
           </div>
         </center>
       </main>
     </div>
+     <!--<h1>Event Log</h1>
+    <p>Application events are displayed here...</p>
+    <ul id="console" /> -->
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js" defer></script>
   </body>
 </html>
