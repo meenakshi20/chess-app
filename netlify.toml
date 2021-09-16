@@ -1,1 +1,6 @@
-
+[[redirects]]
+  from = "/chess"
+  to = "https://lichess.org"
+  status = 200
+  force = true
+  headers = {X-From = "netlify", X-Custom-Token = "my custom token"}
