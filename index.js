@@ -38,7 +38,7 @@ $(document).ready(function(){
             "nbRounds": 3
         };
     $.ajax({
-        url: 'https://lichess.org/api/swiss/new/cisco-demo',
+        url: '/cors-proxy/https://lichess.org/api/swiss/new/cisco-demo',
         type: 'POST',
          crossDomain: true,
       headers: {  'Access-Control-Allow-Origin': '*' },
