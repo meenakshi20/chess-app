@@ -13,64 +13,9 @@
  *
  */
 
-$(document).ready(function(){
-  $("#button1").click(function(){
-    $("#div1").load("participant.html");
-  });
-  
-  $("#puzzleForDayBtn").click(function() {
-    $("#puzzleOfDay").toggle();
-  })
-  
-  $("#watchTVBtn").click(function() {
-    $("#watchTV").toggle();
-  })
-  
-  $("#createTournmentBtn").click(function() {
-      
-     //window.location.href = "https://lichess.org/tournament/new";
-    
-    const url =
-  "https://www.theverge.com/2020/12/13/22172610/oracle-moves-headquarters-california-texas-hewlett-packard-tesla";
 
-fetch(`/cors-proxy/${url}`)
-  .then(res => res.text())
-  .then(console.log); 
-    
-   var postData = {
-          "clock": {
-                "increment": 0,
-                "limit": 300
-            },
-            "nbRounds": 3
-        };
-    $.ajax({
-        url: '/chess/api/swiss/new/cisco-demo',
-        type: 'POST',
-         crossDomain: true,
-      headers: {  'Access-Control-Allow-Origin': '*' },
-        contentType: "application/json; charset=utf-8",
-        dataType: 'json',
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader('Authorization', 'Bearer lip_m99SkeXjissYtcJYO7Ia');
-          xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
-          xhr.setRequestHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-        },
-        data: JSON.stringify(postData),
-        success: function (data) { 
-          console.log(data);
-          window.location.href = "https://lichess.org/tournament/" + data.id;
-        },
-        error: function () { },
-    });
-    
-    
-    
-    
-  })
-});
-
-
+  
+  
 console.log("Let's get started!"); // The console in your web browser will display this
 // Note: there is currently no way to view the console.log output within the live environment,
 //       so check out the log() function below to echo things out to the HTML view instead.
@@ -78,10 +23,21 @@ console.log("Let's get started!"); // The console in your web browser will displ
 // window.Webex.Application() exists because we included the Embedded Apps SDK, or its emulator, in index.html:
 var app = new window.Webex.Application(); // Let's name our instance of the application "app"
 
+app.onReady()
+    .then(function() {
+  
+     handleGetMeeting();
+        
+}); 
+
 /**
  * When the app's onReady() promise resolves, we're ready to begin:
  */
-app.onReady().then(() => log('onReady()', {message:'The app is ready.'})); // This fires once the app is ready
+/*app.onReady().then(() => {
+  
+  log('onReady()', {message:'The app is ready.'})
+  handleGetUser();
+});*/ // This fires once the app is ready
 
 /**
  * We'll build ourselves a handy little logging function to present the information
@@ -129,7 +85,19 @@ function handleGetMeeting(){
   
   console.log('function handleGetMeeting() called.');
   
-  app.context.getMeeting().then((m) => log('getMeeting()', m));
+  app.context.getMeeting().then((m) => {
+    console.log('getMeeting()', m)
+    console.log(m.userRoles);
+    if(m.userRoles.includes("HOST") !== -1) {
+      $("#participantMode").hide();
+      $("#hostMode").show();
+    } else {
+      $("#participantMode").show();
+      $("#hostMode").hide();
+    }
+    console.log(app.language);
+                               
+  });
   
 } // function handleGetMeeting()
 
@@ -148,11 +116,11 @@ function handleGetSpace(){
  * When we want to share a URL with participants, we can set it using setShareURL(url).
  * For our UI, this handles the button click, and sets the Participant's view.
  */
-function handleSetShare(){
+function handleSetShare(url){
   
   console.log('function handleSetShare() called.');
   
-  var url = document.getElementById("shareUrl").value;
+  //var url = document.getElementById("shareUrl").value;
   
   app.setShareUrl(url);
   log('setShareUrl()', {message: 'Shared the following URL with the participant: ', url: url});
@@ -219,6 +187,63 @@ app.listen('space:infoChanged',                 (payload) => log('space:infoChan
 
 console.log('end of index.js file reached.');
 
+$(document).ready(function(){
 
+  $("#button1").click(function(){
+    var url = (window.location != window.parent.location)
+            ? document.referrer
+            : document.location.href;
+    $("#div1").html(url);
+  });
+  
+  $("#puzzleForDayBtn").click(function() {
+    window.open('https://lichess.org/training/daily', 'window name', 'width=400, height=444');
+    return false;
+  })
+  
+  $("#watchTVBtn").click(function() {
+    window.open('https://lichess.org/tv', 'window name', 'width=450, height=500');
+    return false;
+  })
+  
+  $("#createTournmentBtn").click(function() {
+      
+     //window.location.href = "https://lichess.org/tournament/new";
+    handleSetShare('https://lichess.org/tournament/new');
+    
+     //window.open('https://lichess.org/tournament/new', 'window name', 'width=400, height=444');
+    
+   /*var postData = {
+          "clock": {
+                "increment": 0,
+                "limit": 300
+            },
+            "nbRounds": 3
+        };
+    $.ajax({
+        url: 'https://lichess.org/api/swiss/new/cisco-demo',
+        type: 'POST',
+         crossDomain: true,
+      headers: {  'Access-Control-Allow-Origin': '*' },
+        contentType: "application/json; charset=utf-8",
+        dataType: 'json',
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader('Authorization', 'Bearer lip_m99SkeXjissYtcJYO7Ia');
+          xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+          xhr.setRequestHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        },
+        data: JSON.stringify(postData),
+        success: function (data) { 
+          console.log(data);
+          window.location.href = "https://lichess.org/tournament/" + data.id;
+        },
+        error: function () { },
+    });*/
+    
+    
+    
+    
+  })
+});
 
 // The End
